@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import nodemailer from "nodemailer";
 import cors from "cors"
 import {userRoute} from "./routes/login.js"
+import {tasksRoute} from "./routes/myday.js"
 
 dotenv.config();
 const app = express();
@@ -55,6 +56,7 @@ app.get("/",(req,res)=>{
 })
 
 app.use("/login",userRoute)
+app.use("/tasks",tasksRoute)
 
 export {client}
 
