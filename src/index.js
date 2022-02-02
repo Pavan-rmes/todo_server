@@ -51,9 +51,9 @@ const todoData = [
 app.use(cors())
 app.use(express.json())
 
-// app.get("/",(req,res)=>{
-//   res.send("hello from todo app")
-// })
+app.get("/",(req,res)=>{
+  res.send("hello from todo app")
+})
 
 app.use("/login",userRoute)
 app.use("/tasks",tasksRoute)
