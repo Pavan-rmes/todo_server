@@ -7,7 +7,7 @@ async function getUserDetails(email){
 
 
 async function getDayTasks(){
-    const data = await client.db("todo").collection("tasks").find({}).sort({ id: 1 }).limit(10).toArray();
+    const data = await client.db("todo").collection("tasks").find({}).toArray();
     return data;
 }
 
