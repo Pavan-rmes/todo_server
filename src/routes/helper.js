@@ -1,4 +1,5 @@
 import { client } from "../index.js";
+import {ObjectId} from "mongodb"
 
 async function getUserDetails(email){
     const loginData = await client.db("todo").collection("login").findOne({email:email})
@@ -16,4 +17,17 @@ async function addNewTask(task){
     return data;
 }
 
-export {getUserDetails,getDayTasks,addNewTask}
+
+async function changeStatus(task){
+    const {id,status} = task
+    const data = await client.db("todo").collection("tasks").updateOne({_id:ObjectId(id)},{$set:{status:status}})
+    return data
+}
+
+async function changeImp(task){
+    const {id,imp} = task
+    const data = await client.db("todo").collection("tasks").updateOne({_id:ObjectId(id)},{$set:{imp:imp}})
+    return data
+}
+
+export {getUserDetails,getDayTasks,addNewTask,changeStatus,changeImp}
